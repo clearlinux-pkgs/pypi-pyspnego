@@ -4,7 +4,7 @@
 #
 Name     : pypi-pyspnego
 Version  : 0.3.1
-Release  : 4
+Release  : 5
 URL      : https://files.pythonhosted.org/packages/e1/0c/17cb3853089ac70c00095a553773839936a9265afe90919c934322feeaba/pyspnego-0.3.1.tar.gz
 Source0  : https://files.pythonhosted.org/packages/e1/0c/17cb3853089ac70c00095a553773839936a9265afe90919c934322feeaba/pyspnego-0.3.1.tar.gz
 Summary  : Windows Negotiate Authentication Client and Server
@@ -15,9 +15,6 @@ Requires: pypi-pyspnego-license = %{version}-%{release}
 Requires: pypi-pyspnego-python = %{version}-%{release}
 Requires: pypi-pyspnego-python3 = %{version}-%{release}
 BuildRequires : buildreq-distutils3
-Provides: pyspnego
-Provides: pyspnego-python
-Provides: pyspnego-python3
 BuildRequires : pypi(cryptography)
 
 %description
@@ -59,6 +56,7 @@ Group: Default
 Requires: python3-core
 Provides: pypi(pyspnego)
 Requires: pypi(cryptography)
+Requires: pypi(krb5)
 
 %description python3
 python3 components for the pypi-pyspnego package.
@@ -73,7 +71,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1641479984
+export SOURCE_DATE_EPOCH=1644437395
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
