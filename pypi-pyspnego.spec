@@ -4,7 +4,7 @@
 #
 Name     : pypi-pyspnego
 Version  : 0.5.2
-Release  : 9
+Release  : 10
 URL      : https://files.pythonhosted.org/packages/05/ee/f48c0427845659b25d6ae6edcd480c5f5e17f9e4006f035bd94a62449908/pyspnego-0.5.2.tar.gz
 Source0  : https://files.pythonhosted.org/packages/05/ee/f48c0427845659b25d6ae6edcd480c5f5e17f9e4006f035bd94a62449908/pyspnego-0.5.2.tar.gz
 Summary  : Windows Negotiate Authentication Client and Server
@@ -67,13 +67,16 @@ python3 components for the pypi-pyspnego package.
 %prep
 %setup -q -n pyspnego-0.5.2
 cd %{_builddir}/pyspnego-0.5.2
+pushd ..
+cp -a pyspnego-0.5.2 buildavx2
+popd
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1651523680
+export SOURCE_DATE_EPOCH=1656381884
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -84,6 +87,15 @@ export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 -m build --wheel --skip-dependency-check --no-isolation
+pushd ../buildavx2/
+export CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 -msse2avx"
+export CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 -msse2avx "
+export FFLAGS="$FFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
+export FCFLAGS="$FCFLAGS -m64 -march=x86-64-v3 "
+export LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3 "
+python3 -m build --wheel --skip-dependency-check --no-isolation
+
+popd
 
 %install
 export MAKEFLAGS=%{?_smp_mflags}
@@ -94,6 +106,15 @@ pip install --root=%{buildroot} --no-deps --ignore-installed dist/*.whl
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
+pushd ../buildavx2/
+export CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
+export CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
+export FFLAGS="$FFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
+export FCFLAGS="$FCFLAGS -m64 -march=x86-64-v3 "
+export LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3 "
+pip install --root=%{buildroot}-v3 --no-deps --ignore-installed dist/*.whl
+popd
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
