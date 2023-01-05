@@ -4,7 +4,7 @@
 #
 Name     : pypi-pyspnego
 Version  : 0.7.0
-Release  : 23
+Release  : 24
 URL      : https://files.pythonhosted.org/packages/97/f3/bdf3cd5f4c5a1bf9e1d4bb771c133850ee08241c18cafd90a6d872937a9f/pyspnego-0.7.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/97/f3/bdf3cd5f4c5a1bf9e1d4bb771c133850ee08241c18cafd90a6d872937a9f/pyspnego-0.7.0.tar.gz
 Summary  : Windows Negotiate Authentication Client and Server
