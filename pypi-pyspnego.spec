@@ -4,10 +4,10 @@
 # Using build pattern: pyproject
 #
 Name     : pypi-pyspnego
-Version  : 0.9.2
-Release  : 28
-URL      : https://files.pythonhosted.org/packages/5d/48/6e1d700165da513d76c3115779d207d79cb2d7a5a0a54112f791e2c8665c/pyspnego-0.9.2.tar.gz
-Source0  : https://files.pythonhosted.org/packages/5d/48/6e1d700165da513d76c3115779d207d79cb2d7a5a0a54112f791e2c8665c/pyspnego-0.9.2.tar.gz
+Version  : 0.10.0
+Release  : 29
+URL      : https://files.pythonhosted.org/packages/36/01/ec91487752013de869ec0f67d22f810297c930b21ba77c5593e7c5f266a9/pyspnego-0.10.0.tar.gz
+Source0  : https://files.pythonhosted.org/packages/36/01/ec91487752013de869ec0f67d22f810297c930b21ba77c5593e7c5f266a9/pyspnego-0.10.0.tar.gz
 Summary  : Windows Negotiate Authentication Client and Server
 Group    : Development/Tools
 License  : MIT
@@ -16,7 +16,6 @@ Requires: pypi-pyspnego-license = %{version}-%{release}
 Requires: pypi-pyspnego-python = %{version}-%{release}
 Requires: pypi-pyspnego-python3 = %{version}-%{release}
 BuildRequires : buildreq-distutils3
-BuildRequires : pypi(cython)
 BuildRequires : pypi(setuptools)
 # Suppress stripping binaries
 %define __strip /bin/true
@@ -68,10 +67,10 @@ python3 components for the pypi-pyspnego package.
 
 
 %prep
-%setup -q -n pyspnego-0.9.2
-cd %{_builddir}/pyspnego-0.9.2
+%setup -q -n pyspnego-0.10.0
+cd %{_builddir}/pyspnego-0.10.0
 pushd ..
-cp -a pyspnego-0.9.2 buildavx2
+cp -a pyspnego-0.10.0 buildavx2
 popd
 
 %build
@@ -79,7 +78,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1693325259
+export SOURCE_DATE_EPOCH=1695825988
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
