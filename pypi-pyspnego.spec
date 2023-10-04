@@ -4,10 +4,10 @@
 # Using build pattern: pyproject
 #
 Name     : pypi-pyspnego
-Version  : 0.10.1
-Release  : 30
-URL      : https://files.pythonhosted.org/packages/07/86/874ec1d25777087b7d8257611f9e590f674ef53fcf4348cf7b317761390d/pyspnego-0.10.1.tar.gz
-Source0  : https://files.pythonhosted.org/packages/07/86/874ec1d25777087b7d8257611f9e590f674ef53fcf4348cf7b317761390d/pyspnego-0.10.1.tar.gz
+Version  : 0.10.2
+Release  : 31
+URL      : https://files.pythonhosted.org/packages/3a/c3/401a5ae889b51f80e91474b6acda7dae8d704c6fe8424fd40e0ff0702812/pyspnego-0.10.2.tar.gz
+Source0  : https://files.pythonhosted.org/packages/3a/c3/401a5ae889b51f80e91474b6acda7dae8d704c6fe8424fd40e0ff0702812/pyspnego-0.10.2.tar.gz
 Summary  : Windows Negotiate Authentication Client and Server
 Group    : Development/Tools
 License  : MIT
@@ -67,10 +67,10 @@ python3 components for the pypi-pyspnego package.
 
 
 %prep
-%setup -q -n pyspnego-0.10.1
-cd %{_builddir}/pyspnego-0.10.1
+%setup -q -n pyspnego-0.10.2
+cd %{_builddir}/pyspnego-0.10.2
 pushd ..
-cp -a pyspnego-0.10.1 buildavx2
+cp -a pyspnego-0.10.2 buildavx2
 popd
 
 %build
@@ -78,7 +78,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1695998773
+export SOURCE_DATE_EPOCH=1696431217
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
