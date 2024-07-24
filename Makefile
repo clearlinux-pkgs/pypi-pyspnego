@@ -1,5 +1,5 @@
 PKG_NAME := pypi-pyspnego
-URL = https://files.pythonhosted.org/packages/2b/01/3b26738ad7c675d558d71598bab5738750bd17877d3205cef7a8a680e7fc/pyspnego-0.11.0.tar.gz
+URL = https://files.pythonhosted.org/packages/46/f5/1f938a781742d18475ac43a101ec8a9499e1655da0984e08b59e20012c04/pyspnego-0.11.1.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
